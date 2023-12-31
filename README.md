@@ -5,7 +5,7 @@ Aplikasi ini merupakan solusi lengkap untuk manajemen koleksi buku Anda secara e
 ![Slide 16_9 - 2](https://github.com/FathurDewantoro/book_management_mobile/assets/48375747/8651c7d3-e864-4439-a5df-ad8a9254213a)
 
 ![Slide 16_9 - 3](https://github.com/FathurDewantoro/book_management_mobile/assets/48375747/26ca820c-8fa2-4593-be3a-43baa7f1ef7b)
-Untuk uji coba aplikasi dapat dibuka pada folder app tester atau [disini](https://github.com/FathurDewantoro/book_management_mobile/blob/main/app_tester/app-release.apk)
+Untuk uji coba aplikasi dapat dibuka pada folder app tester atau [disini](https://github.com/FathurDewantoro/book_management_mobile/tree/main/app_tester)
 ## Fitur Utama:
 1. ### Registrasi Pengguna:
    Memungkinkan pengguna untuk membuat akun baru dengan mudah. Sistem keamanan yang kuat untuk melindungi data pengguna.
