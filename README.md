@@ -11,7 +11,7 @@ Aplikasi ini merupakan solusi lengkap untuk manajemen koleksi buku Anda secara e
    Memungkinkan pengguna untuk membuat akun baru dengan mudah. Sistem keamanan yang kuat untuk melindungi data pengguna.
 2. ### Login:
    Autentikasi aman untuk masuk ke akun pengguna. Sesi login yang aman dan nyaman.
-3. ###Tampil Data Buku:
+3. ### Tampil Data Buku:
    Menampilkan daftar buku yang ada dengan tampilan yang rapi dan terorganisir. Informasi utama seperti judul, penulis, dan sampul buku ditampilkan dengan jelas.
 4. ### Buat Buku Baru:
    Fasilitas untuk menambahkan buku baru ke koleksi. Isi formulir dengan mudah untuk menyimpan informasi buku.
