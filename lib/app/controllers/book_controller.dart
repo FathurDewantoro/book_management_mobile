@@ -10,8 +10,10 @@ class BookController extends GetxController {
   late TambahBukuResponse dataResponseBuku;
   var isLoadingAdd = false.obs;
   var isLoadingEdit = false.obs;
+  var isLoadingDelete = false.obs;
   var successAdd = false.obs;
   var successEdit = false.obs;
+  var successDelete = false.obs;
   var message = "".obs;
 
   @override
@@ -71,6 +73,28 @@ class BookController extends GetxController {
     } else {
       message(response.data["message"]);
       successEdit(false);
+    }
+
+    print("70-_$runtimeType | Pesan dari server : $message");
+
+    isLoadingEdit(false);
+  }
+
+  deleteBook(id) async {
+    isLoadingEdit(true);
+    var token = await MySharedPreferences().readToken();
+    var response = await configDio(
+        baseUrl: UrlAccess.baseUrl,
+        endPoint: "${UrlAccess.books}/$id",
+        mode: "delete",
+        token: token);
+
+    if (response!.statusCode! < 300) {
+      message(response.data["message"]);
+      successDelete(true);
+    } else {
+      message(response.data["message"]);
+      successDelete(false);
     }
 
     print("70-_$runtimeType | Pesan dari server : $message");

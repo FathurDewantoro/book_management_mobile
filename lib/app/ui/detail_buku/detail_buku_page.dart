@@ -1,11 +1,14 @@
+import 'package:book_management_mobile/app/controllers/book_controller.dart';
 import 'package:book_management_mobile/app/data/model/book_response.dart';
 import 'package:book_management_mobile/app/ui/edit_buku/edit_buku_page.dart';
 import 'package:book_management_mobile/app/utils/colors.dart';
 import 'package:book_management_mobile/app/utils/my_elevated_button.dart';
+import 'package:book_management_mobile/app/utils/pop_up_custom.dart';
 import 'package:book_management_mobile/app/utils/size_helper.dart';
 import 'package:book_management_mobile/app/utils/styles.dart';
 import 'package:book_management_mobile/app/utils/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
 class DetailBukuPage extends StatefulWidget {
@@ -17,6 +20,8 @@ class DetailBukuPage extends StatefulWidget {
 }
 
 class _DetailBukuPageState extends State<DetailBukuPage> {
+  BookController controller = Get.put(BookController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,23 +116,48 @@ class _DetailBukuPageState extends State<DetailBukuPage> {
                     borderColor, // Adjust the border color // Adjust the border width
               ),
             )),
-        child: MyElevatedButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return EditBukuPage(
-                    dataBuku: widget.dataBuku,
-                  );
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MyElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return EditBukuPage(
+                        dataBuku: widget.dataBuku,
+                      );
+                    },
+                  ));
                 },
-              ));
-            },
-            width: displayWidth(context),
-            borderRadius: BorderRadius.circular(8),
-            height: 50,
-            child: Text(
-              "Edit Buku",
-              style: titleButton(whiteColor),
-            )),
+                width: displayWidth(context) * 0.7,
+                borderRadius: BorderRadius.circular(8),
+                height: 50,
+                child: Text(
+                  "Edit Buku",
+                  style: titleButton(whiteColor),
+                )),
+            MyElevatedButton(
+                onPressed: () {
+                  controller.deleteBook(widget.dataBuku.id).then((value) {
+                    controller.successDelete.isTrue
+                        ? alertSuccess(context,
+                            title: "Berhasil",
+                            subtitle:
+                                "Anda berhasil menghapus buku ${widget.dataBuku.title ?? ""}")
+                        : alertError(context,
+                            title: "Gagal", subtitle: "Gagal menghapus buku.");
+                  });
+                },
+                color: errorColor,
+                width: displayWidth(context) * 0.2,
+                borderRadius: BorderRadius.circular(8),
+                height: 50,
+                child: Icon(
+                  IconlyLight.delete,
+                  color: whiteColor,
+                )),
+          ],
+        ),
       ),
     );
   }
